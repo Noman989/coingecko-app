@@ -30,11 +30,14 @@ export const tableSlice = createSlice({
   reducers: {
     setCoinsList: (state, action: PayloadAction<Coin[]>) => {
         state.coins = [...action.payload];
+    },
+    pushCoin: (state, action: PayloadAction<Coin>) => {
+        state.coins.push(action.payload);
     }
   },
 });
 
-export const { setCoinsList } = tableSlice.actions;
+export const { setCoinsList, pushCoin } = tableSlice.actions;
 
 export const selectTable = (state: RootState) => state.table.coins;
 
