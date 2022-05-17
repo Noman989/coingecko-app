@@ -21,33 +21,34 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  scales: {
-    x: {
-      display: false
-    },
-    y: {
-      display: false
-    }
-  },
-  plugins: {
-    legend: {
-      display: false,
-    },
-    title: {
-      display: false,
-    },
-  },
-};
-
-
 export interface ChartProps {
   chartData: number[];
   name: string;
+  height?: string;
+  width?: string;
+  x?: boolean;
+  y?: boolean;
 }
-export const Chart: React.FC<ChartProps> = ({chartData,  name}) => {
-  
+export const Chart: React.FC<ChartProps> = ({chartData,  name, height, width, x, y}) => {
+  const options = {
+    responsive: true,
+    scales: {
+      x: {
+        display: x || false
+      },
+      y: {
+        display: y || false
+      }
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      title: {
+        display: false,
+      },
+    },
+  };  
   const labels = ["1", "2", "3", "4", "5", "6", "7"];
   const data = {
     labels,
@@ -63,7 +64,7 @@ export const Chart: React.FC<ChartProps> = ({chartData,  name}) => {
 
   return (
     <div className="overflow-hidden">
-      <Line options={options} data={data} height='60px' width='150px' ></Line>
+      <Line options={options} data={data} height={height} width={width} ></Line>
     </div>
   );
 };
