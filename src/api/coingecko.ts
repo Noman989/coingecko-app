@@ -1,11 +1,17 @@
 import { Coin } from "../components/table/table.slice";
-export const getGeneralData = async (id: string) => {
+
+export const getCryptoDetails = async (id: string) => {
   const res = await fetch(
     `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true`,
     { method: "GET" }
   );
 
   const data = await res.json();
+  return data;
+};
+
+export const getGeneralData = async (id: string) => {
+  const data = await getCryptoDetails(id);
   //   console.log(data);
   const vp = await getVolumeAndPercent(id);
 
@@ -23,7 +29,7 @@ export const getGeneralData = async (id: string) => {
     gain: vp.percent.gain,
     _24hVolume: `${vp.volume}`,
     symbol: data.symbol,
-    chartData
+    chartData,
   };
 
   return coin;
