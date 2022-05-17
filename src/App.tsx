@@ -4,6 +4,8 @@ import './App.css';
 import { Nav } from './components/nav';
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
+import { Compare } from './pages/Compare';
+import { CoinId } from './pages/CoinId';
 
 function App() {
   return (
@@ -11,7 +13,8 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/compare" element={<div>Compare</div>} />
+        <Route path="/compare" element={<Compare />} />
+        <Route path="/:coinid" element={<CoinId />} />
       </Routes>
     </div>
   );
