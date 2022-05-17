@@ -7,6 +7,7 @@ export interface NavProps {
 export const Nav: React.FC<NavProps> = () => {
   const location = useLocation();
   const [currentPath, setCurrentPath] = React.useState(location.pathname);
+  const [coinId, setCoinId] = React.useState("");
 
   React.useEffect(() => {
     setCurrentPath(location.pathname);
@@ -49,6 +50,13 @@ export const Nav: React.FC<NavProps> = () => {
           id="coinId-navbar"
           className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="CoinId..."
+          value={coinId}
+          onChange={(e) => setCoinId(e.currentTarget.value)}
+          onKeyUp={(e) => {
+            if (e.key === 'Enter') {
+              goto(`/${coinId}`);
+            }
+          }}
         />
       </div>
     </div>
