@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Chart } from "../chart/chart";
 import { selectTable } from "./table.slice";
 
 interface TableRowProps {
@@ -7,14 +8,18 @@ interface TableRowProps {
   thumbImageURI: string;
   symbol: string;
   _24percent: string;
+  gain: boolean;
   _24hVolume: string;
+  chartData: number[];
 }
 const TableRow: React.FC<TableRowProps> = ({
   name,
   _24hVolume,
   _24percent,
+  gain,
   symbol,
   thumbImageURI,
+  chartData,
 }: TableRowProps) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
@@ -26,8 +31,11 @@ const TableRow: React.FC<TableRowProps> = ({
         <span>{name}</span>
       </th>
       <td className="px-6 py-4">{symbol}</td>
-      <td className="px-6 py-4">{_24percent}</td>
+      <td className={`px-6 py-4 ${gain ? 'text-green-600' : 'text-red-400'}`}>{parseFloat(_24percent).toFixed(3)}%</td>
       <td className="px-6 py-4">{_24hVolume}</td>
+      <td>
+        <Chart chartData={chartData} name={name} />
+      </td>
       <td className="px-6 py-4 text-right">
         <a
           href="#"
@@ -65,6 +73,9 @@ export const Table = () => {
               24h Volume
             </th>
             <th scope="col" className="px-6 py-3">
+              7d
+            </th>
+            <th scope="col" className="px-6 py-3">
               <span className="sr-only">Edit</span>
             </th>
           </tr>
@@ -77,7 +88,9 @@ export const Table = () => {
               thumbImageURI={coin.image.thumb}
               symbol={coin.symbol}
               _24percent={coin._24Percent}
+              gain={coin.gain}
               _24hVolume={coin._24hVolume}
+              chartData={coin.chartData}
             ></TableRow>
           ))}
         </tbody>

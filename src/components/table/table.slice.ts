@@ -12,7 +12,9 @@ export interface Coin {
     id: string;
     symbol: string;
     _24Percent: string;
+    gain: boolean;
     _24hVolume: string;
+    chartData: number[];
 }
 
 export interface TableState {
@@ -32,7 +34,16 @@ export const tableSlice = createSlice({
         state.coins = [...action.payload];
     },
     pushCoin: (state, action: PayloadAction<Coin>) => {
-        state.coins.push(action.payload);
+        const found = {val: false, index: 0};
+        state.coins.map((coin, index) => {
+            if (coin.id === action.payload.id) {
+                found.val = true;
+                found.index = index;
+            }
+        })
+        if (found.val)
+            state.coins[found.index] = action.payload;
+        else state.coins.push(action.payload);
     }
   },
 });
