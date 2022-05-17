@@ -22,7 +22,7 @@ function App() {
         dispatch(pushCoin(coin));
         counter++;
         if (!CoinsList.compare_list[counter]) clearInterval(interval);
-      }, 300);
+      }, 1000);
 
       await getVolumeAndPercent("bitcoin");
     })();
