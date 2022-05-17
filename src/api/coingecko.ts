@@ -1,8 +1,8 @@
 import { Coin } from "../components/table/table.slice";
 
-export const getCryptoDetails = async (id: string) => {
+export const getCryptoDetails = async (id: string, market_data = false) => {
   const res = await fetch(
-    `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true`,
+    `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=${market_data.toString()}&community_data=false&developer_data=false&sparkline=true`,
     { method: "GET" }
   );
 
