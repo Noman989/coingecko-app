@@ -51,6 +51,8 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.15.0"
+    "@types/faker": "^6.6.9",
+    "eslint": "^8.15.0",
+    "faker": "^6.6.6"
   }
 }
