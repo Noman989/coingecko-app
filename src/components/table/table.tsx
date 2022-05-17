@@ -34,7 +34,7 @@ const TableRow: React.FC<TableRowProps> = ({
       <td className={`px-6 py-4 ${gain ? 'text-green-600' : 'text-red-400'}`}>{parseFloat(_24percent).toFixed(3)}%</td>
       <td className="px-6 py-4">{_24hVolume}</td>
       <td>
-        <Chart chartData={chartData} name={name} />
+        <Chart height="60px" width="150px" chartData={chartData} name={name} />
       </td>
       <td className="px-6 py-4 text-right">
         <a
