@@ -28,7 +28,7 @@ export const Nav: React.FC<NavProps> = () => {
               e.preventDefault();
               goto("/");
             }}
-            className={`${currentPath === '/' && 'text-cyan-100'}`}
+            className={`${currentPath === '/' ? 'text-cyan-100' : 'text-white'}`}
             >
             Home
           </a>
@@ -38,7 +38,7 @@ export const Nav: React.FC<NavProps> = () => {
               e.preventDefault();
               goto("/compare");
             }}
-            className={`${currentPath === '/compare' && 'text-cyan-100'}`}
+            className={`${currentPath === '/compare' ? 'text-cyan-100' : 'text-white'}`}
           >
             Compare
           </a>
