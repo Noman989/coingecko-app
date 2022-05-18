@@ -4,12 +4,12 @@
 ![CoinId Page](https://i.ibb.co/PFPT4vm/Capture3.png)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) typescript template. **The App is very simple and the code is for the major part self-explanatory!**
 
-## App features
+# App features
 1) shows list of hardcoded coins with data fetched from coingecko api.
 2) shows more details of any valid coinid; data fetched from coingecko api. see `src/utils/coins_list.full.json` for full list of valid coin id's.
 3) ~~compares 2 coins side by side~~. feature scrapped. feel free to continue on your own.
 
-## Tech Stack
+# Tech Stack
 1) nodejs
 2) typescript
 3) tailwindcss
@@ -18,11 +18,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 7) chart.js
 8) Reduxjs/toolkit
 
-## App Architecture
+# App Architecture
 ![OverView](https://i.ibb.co/khgmCKc/Capture.png)
 When user visits the app the App component loads in data from the coingecko API to fill in the table and the charts.  There is a link inside every row that points to the coin id page of that coin. The CoinId page also loads in information of the coinid inside the url parameter. The Nav component contains links to HomePage and ~~Compare Page~~ also an input field for loading any coin data by providing a valid coin id. List of valid Coin Id's is stored in utils folder.
 
-## Technical Decisions
+# Technical Decisions
 ### 1) Typescript over Javascript
 Choosing typescript over javascript is really a no brainer. I choose typescript to avoid type errors and to practice typesafety. it improves workflow and decreases development time.
 ### 2) Fetch over Axios
@@ -30,7 +30,7 @@ while axios is better and more refined; for smaller projects its an unneeded com
 ### 3) Tailwindcss over CSS / MUI
 Tailwind css is superior to vanilla css because it saves time. while component libraries are a mess to customize.
 
-## Code Structure
+# Code Structure
 ```
 api                     this folder houses centralized files for calling external API's
 components              this folder houses components used in pages
