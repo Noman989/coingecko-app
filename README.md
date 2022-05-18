@@ -23,11 +23,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 When user visits the app the App component loads in data from the coingecko API to fill in the table and the charts.  There is a link inside every row that points to the coin id page of that coin. The CoinId page also loads in information of the coinid inside the url parameter. The Nav component contains links to HomePage and ~~Compare Page~~ also an input field for loading any coin data by providing a valid coin id. List of valid Coin Id's is stored in utils folder.
 
 ## Technical Decisions
-##### 1) Typescript over Javascript
+### 1) Typescript over Javascript
 Choosing typescript over javascript is really a no brainer. I choose typescript to avoid type errors and to practice typesafety. it improves workflow and decreases development time.
-##### 2) Fetch over Axios
+### 2) Fetch over Axios
 while axios is better and more refined; for smaller projects its an unneeded complexity.
-##### 3) Tailwindcss over CSS / MUI
+### 3) Tailwindcss over CSS / MUI
 Tailwind css is superior to vanilla css because it saves time. while component libraries are a mess to customize.
 
 ## Code Structure
@@ -46,16 +46,16 @@ contains functions for calling coingecko api for crypto currencies data.
 1) Nav
 2) Chart
 3) Table
-#### Nav :
+### Nav :
 Nav is very straightforward; uses `useNavigate` and `useLocation` for logic and redirection.
 `components/nav/nav.tsx` contains the component it self and `component/nav/index.tsx` reexports the component. for Components i am using named exports instead of default exports for better naming conventions.
 Nav is used inside src/App.tsx
 **code is self explanatory.**
 
-#### Chart :
+### Chart :
 Chart.js line chart shows pricing for last 7 days.
 
-#### Table :
+### Table :
 Displays data of hardcoded coin ids, data is fetched from redux store. data in redux store is initialized at `useEffect` of App.tsx.
 
 ## Pages
@@ -63,13 +63,13 @@ Displays data of hardcoded coin ids, data is fetched from redux store. data in r
 2) CoinId
 3) ~~Compare~~ scrapped.
 
-#### Home :
+### Home :
 Home Page contains the Table component
 
-#### Coin Id :
+### Coin Id :
 Coin Id page shows extended detail of a coin from the coingecko API.
 
-#### ~~Compare~~ :
+### ~~Compare~~ :
 Scrapped the page due to time constraints. If the idea was implemented 2 card from CoinId page will be used side by for comparisons.
 
 ## Available Scripts
