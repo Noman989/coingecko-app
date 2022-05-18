@@ -2,8 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Chart } from "../chart/chart";
 import { selectTable } from "./table.slice";
+import { useNavigate } from "react-router-dom";
 
 interface TableRowProps {
+  id: string;
   name: string;
   thumbImageURI: string;
   symbol: string;
@@ -13,6 +15,7 @@ interface TableRowProps {
   chartData: number[];
 }
 const TableRow: React.FC<TableRowProps> = ({
+  id,
   name,
   _24hVolume,
   _24percent,
@@ -21,17 +24,22 @@ const TableRow: React.FC<TableRowProps> = ({
   thumbImageURI,
   chartData,
 }: TableRowProps) => {
+  const nav = useNavigate();
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
       <th
         scope="row"
         className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap flex items-center gap-2"
       >
-        <span><img src={thumbImageURI} alt={symbol}></img></span>
+        <span>
+          <img src={thumbImageURI} alt={symbol}></img>
+        </span>
         <span>{name}</span>
       </th>
       <td className="px-6 py-4">{symbol}</td>
-      <td className={`px-6 py-4 ${gain ? 'text-green-600' : 'text-red-400'}`}>{parseFloat(_24percent).toFixed(3)}%</td>
+      <td className={`px-6 py-4 ${gain ? "text-green-600" : "text-red-400"}`}>
+        {parseFloat(_24percent).toFixed(3)}%
+      </td>
       <td className="px-6 py-4">{_24hVolume}</td>
       <td>
         <Chart height="60px" width="150px" chartData={chartData} name={name} />
@@ -40,6 +48,10 @@ const TableRow: React.FC<TableRowProps> = ({
         <a
           href="#"
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          onClick={(e) => {
+            e.preventDefault();
+            nav(`/${id}`);
+          }}
         >
           More
         </a>
@@ -83,6 +95,7 @@ export const Table = () => {
         <tbody>
           {coins.map((coin) => (
             <TableRow
+              id={coin.id}
               key={coin.id}
               name={coin.name}
               thumbImageURI={coin.image.thumb}
